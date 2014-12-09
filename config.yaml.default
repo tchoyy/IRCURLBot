@@ -1,0 +1,9 @@
+# Configuration IRC
+irc:
+  server: yourserver.net
+  port: 6667
+  nick: chooseanickname
+  channel: '#yourchannel' 
+
+# Configuration du chemin de la BDD
+dbPath: db/urlIRC
