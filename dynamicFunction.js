@@ -34,6 +34,6 @@ module.exports = {
 		});
 	},
 	help : function(paramsFunction){
-		client.say(config.irc.channel,paramsFunction.from+": list of availables commands\n\t- getAllUrls\n\t- search <request>");
+		client.say(config.irc.channel,paramsFunction.from+": put "+config.irc.optin+" to record an Url\nlist of availables commands\n\t- getAllUrls\n\t- search <request>");
 	}
 };

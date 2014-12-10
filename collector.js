@@ -6,7 +6,8 @@ var getUrl = require('./helpers.js').getUrl;
 
 module.exports = function(message,from,cb){
 	var myUrl = getUrl(message);
-	if ((myUrl != null) && (from != config.irc.nick)) {
+	var optInRegExp = new RegExp("( "+config.irc.optin+"|"+config.irc.optin+" )");
+	if ((myUrl != null) && (from != config.irc.nick) && (optInRegExp.test(message))) {
 		var data = {
 			"_id":uuid.v1(),
 			"message": message,
