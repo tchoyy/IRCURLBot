@@ -1,10 +1,7 @@
 var myFunctions = require('./dynamicFunction.js');
-var getUrl = require('./getUrl.js');
-var moment = require('moment');
-var uuid = require('node-uuid');
 var client = require('./clientIRC.js');
-var dbPouch = require('./pouchDb.js');
 var config = require('./helpers.js').config;
+var collecteur = require('./collecteur.js');
 	
 client.addListener('message',function(from,to,message){
 	var nickRegexp = new RegExp('^'+config.irc.nick+':');
@@ -18,28 +15,8 @@ client.addListener('message',function(from,to,message){
 			if (typeof myFunctions[method] === 'function') myFunctions[method](paramsFunction);	
 		}
 	} else {
-		var myUrl = getUrl(message);
-		if ((myUrl != null) && (from != config.irc.nick)) {
-			var data = {
-				"_id":uuid.v1(),
-				"message": message,
-				"timestamp": moment().format(),
-				"channel": to,
-				"server": config.irc.server+":"+config.irc.port,
-				"nick": from,
-				"urlSite": myUrl
-			};
-			dbPouch.search({
-				query: myUrl,
-				fields: ['urlSite']
-			}).then(function(results){
-				if (results.rows.length != 0) console.log("Erreur ou url déjà existante en base"); 
-				else {
-					dbPouch.put(data).then(function(){
-						client.say(config.irc.channel,data.nick+": votre url "+data.urlSite+" a été enregistrée");
-					});
-				}
-			});
-		}
+		collecteur(message,from,function(err,url){
+			client.say(config.irc.channel,from+": votre url "+url+" a été enregistrée");
+		});
 	}
 });
