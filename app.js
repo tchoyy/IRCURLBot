@@ -1,21 +1,14 @@
-var myFunctions = require('./dynamicFunction.js');
-var client = require('./clientIRC.js');
-var config = require('./helpers.js').config;
-var collecteur = require('./collecteur.js');
+var client = require('./clientIRC');
+var config = require('./helpers').config;
+var collector = require('./collector');
+var responder = require('./responder');
 	
 client.addListener('message',function(from,to,message){
 	var nickRegexp = new RegExp('^'+config.irc.nick+':');
 	if (nickRegexp.test(message)){
-		var method = message.split(" ")[1];
-		var paramsFunction = {
-			params : message.split(" ")[2],
-			from : from
-		};
-		if (/^[0-9A-Za-z-_\&=\.\?]+$/.test(paramsFunction.params) || /^[a-zA-Z]+$/.test(method)) {
-			if (typeof myFunctions[method] === 'function') myFunctions[method](paramsFunction);	
-		}
+		responder(message,from);
 	} else {
-		collecteur(message,from,function(err,url){
+		collector(message,from,function(err,url){
 			client.say(config.irc.channel,from+": votre url "+url+" a été enregistrée");
 		});
 	}

@@ -16,11 +16,21 @@ module.exports = {
 		});
 	},
 	search : function(paramsFunction){
-		dbPouch.query(function(doc,emit){
-			var regexp = new RegExp(paramsFunction.params,"i");
-			if (regexp.test(doc.urlSite) || regexp.test(doc.nick)) emit(doc);
-		},{include_docs:true}).then(function(results){
-			displayURL(_.pluck(results.rows,"doc"),paramsFunction);
+		dbPouch.search({
+			query: paramsFunction.params,
+			fields: ['message','urlSite','nick'],
+			include_docs:true
+		}).then(function(results){
+			if (results.rows.length === 0) {
+				dbPouch.query(function(doc,emit){
+					var regexp = new RegExp(paramsFunction.params,"i");
+					if (regexp.test(doc.urlSite) || regexp.test(doc.nick)) emit(doc);
+				},{include_docs:true}).then(function(results){
+					displayURL(_.pluck(results.rows,"doc"),paramsFunction);
+				});
+			} else {
+				displayURL(_.pluck(results.rows,"doc"),paramsFunction);
+			}
 		});
 	},
 	help : function(paramsFunction){
