@@ -1,7 +1,7 @@
 var YAML = require('yamljs');
 var weburl = require('./regex-weburl.js');
 
-exports.config = YAML.load('config.yaml'),
+exports.config = YAML.load('config/config.yaml'),
 
 exports.getUrl = function(message){
 		var result = message.match(weburl);
