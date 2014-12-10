@@ -1,19 +1,22 @@
 var _ = require('underscore');
+var client = require('./clientIRC.js');
+var dbPouch = require('./pouchDb.js');
+var config = require('./helpers.js').config;
 
 var displayURL = function(results,paramsFunction){
 	_.each(_.pluck(results,"urlSite"),function(item){
-		paramsFunction.client.say(paramsFunction.channel,paramsFunction.from+": "+item);
+		client.say(config.irc.channel,paramsFunction.from+": "+item);
 	});
 };
 
 module.exports = {
 	getAllUrls : function(paramsFunction){
-		paramsFunction.dbPouch.allDocs({include_docs:true}).then(function(results){
+		dbPouch.allDocs({include_docs:true}).then(function(results){
 			displayURL(_.pluck(results.rows,"doc"),paramsFunction);
 		});
 	},
 	search : function(paramsFunction){
-		paramsFunction.dbPouch.query(function(doc,emit){
+		dbPouch.query(function(doc,emit){
 			var regexp = new RegExp(paramsFunction.params,"i");
 			if (regexp.test(doc.urlSite) || regexp.test(doc.nick)) emit(doc);
 		},{include_docs:true}).then(function(results){
@@ -21,6 +24,6 @@ module.exports = {
 		});
 	},
 	help : function(paramsFunction){
-		paramsFunction.client.say(paramsFunction.channel,paramsFunction.from+": list of availables commands\n\t- getAllUrls\n\t- search <request>");
+		client.say(config.irc.channel,paramsFunction.from+": list of availables commands\n\t- getAllUrls\n\t- search <request>");
 	}
 };
