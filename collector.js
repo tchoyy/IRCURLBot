@@ -1,8 +1,9 @@
 var moment = require('moment');
 var uuid = require('node-uuid');
-var config = require('./helpers.js').config;
-var dbPouch = require('./pouchDb.js');
-var getUrl = require('./helpers.js').getUrl;
+var config = require('./helpers').config;
+var dbPouch = require('./pouchDb');
+var getUrl = require('./helpers').getUrl;
+var log = require('./logger');
 
 module.exports = function(message,from,cb){
 	var myUrl = getUrl(message);
@@ -21,7 +22,7 @@ module.exports = function(message,from,cb){
 			query: myUrl,
 			fields: ['urlSite']
 		}).then(function(results){
-			if (results.rows.length != 0) console.log("Erreur ou url déjà existante en base"); 
+			if (results.rows.length != 0) log.warn("Erreur ou url déjà existante en base"); 
 			else {
 				dbPouch.put(data).then(function(){
 					typeof cb === "function" && cb(null,myUrl);

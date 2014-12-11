@@ -1,5 +1,6 @@
 var irc = require('irc');
-var config = require('./helpers.js').config;
+var log = require('./logger');
+var config = require('./helpers').config;
 
 var client = new irc.Client(config.irc.server,config.irc.nick,{
 	port: config.irc.port,
@@ -10,12 +11,12 @@ var client = new irc.Client(config.irc.server,config.irc.nick,{
 
 client.connect(function(){
 	client.join(config.irc.channel,function(){
-		console.log("connection au channel OK");
+		log.info('Connection au serveur %s et channel %s',config.irc.server,config.irc.channel);
 	});
 });
 
 client.addListener('error',function(message){
-	console.log('error: ',message);
+	log.error(message);
 });
 
 module.exports = client;

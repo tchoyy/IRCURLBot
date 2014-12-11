@@ -1,7 +1,7 @@
 var _ = require('underscore');
-var client = require('./clientIRC.js');
-var dbPouch = require('./pouchDb.js');
-var config = require('./helpers.js').config;
+var client = require('./clientIRC');
+var dbPouch = require('./pouchDb');
+var config = require('./helpers').config;
 
 var displayURL = function(results,paramsFunction){
 	_.each(_.pluck(results,"urlSite"),function(item){

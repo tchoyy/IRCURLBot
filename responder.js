@@ -1,4 +1,4 @@
-var myFunctions = require('./dynamicFunction.js');
+var myFunctions = require('./dynamicFunction');
 
 module.exports = function(message,from){
 	var method = message.split(" ")[1];
