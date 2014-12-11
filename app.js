@@ -10,8 +10,11 @@ client.addListener('message',function(from,to,message){
 		responder(message,from);
 	} else {
 		collector(message,from,function(err,data){
-			client.say(config.irc.channel,from+": votre url "+data.url+" ("+data.title+") a été enregistrée");
-			log.info('URL %s de %s enregistrée avec succès',data.url,from);
+			if (err) log.error(err);
+			else {
+				client.say(config.irc.channel,from+": votre url "+data.url+" ("+data.title+") a été enregistrée");
+				log.info('URL %s de %s enregistrée avec succès',data.url,from);
+			}
 		});
 	}
 });
