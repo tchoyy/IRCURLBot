@@ -9,9 +9,9 @@ client.addListener('message',function(from,to,message){
 	if (nickRegexp.test(message)){
 		responder(message,from);
 	} else {
-		collector(message,from,function(err,url){
-			client.say(config.irc.channel,from+": votre url "+url+" a été enregistrée");
-			log.info('URL %s de %s enregistrée avec succès',url,from);
+		collector(message,from,function(err,data){
+			client.say(config.irc.channel,from+": votre url "+data.url+" ("+data.title+") a été enregistrée");
+			log.info('URL %s de %s enregistrée avec succès',data.url,from);
 		});
 	}
 });
