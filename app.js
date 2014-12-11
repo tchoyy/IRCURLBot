@@ -1,8 +1,8 @@
-var client = require('./clientIRC');
-var config = require('./helpers').config;
-var collector = require('./collector');
-var responder = require('./responder');
-var log = require('./logger');
+var client = require('./lib/connections/clientIRC');
+var config = require('./lib/util/helpers').config;
+var collector = require('./lib/collector');
+var responder = require('./lib/responder');
+var log = require('./lib/util/logger');
 	
 client.addListener('message',function(from,to,message){
 	var nickRegexp = new RegExp('^'+config.irc.nick+':');
