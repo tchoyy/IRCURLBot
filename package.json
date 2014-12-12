@@ -1,0 +1,24 @@
+{
+  "name": "IRCUrl",
+  "version": "0.0.1",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "bunyan": "^1.2.3",
+    "cheerio": "^0.18.0",
+    "irc": "^0.3.7",
+    "moment": "^2.8.4",
+    "node-uuid": "^1.4.2",
+    "pouchdb": "^3.2.0",
+    "pouchdb-quick-search": "^1.0.1",
+    "request": "^2.51.0",
+    "underscore": "^1.7.0",
+    "yamljs": "^0.2.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
