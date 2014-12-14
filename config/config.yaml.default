@@ -1,8 +1,8 @@
 # Configuration IRC
 irc:
-  server: yourserver.net
+  server: 'yourserver.net'
   port: 6667
-  nick: chooseanickname
+  nick: 'chooseanickname'
   channel: '#yourchannel' 
   optin: '@link'
 
