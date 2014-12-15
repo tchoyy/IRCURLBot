@@ -3,6 +3,7 @@ var config = require('./lib/util/helpers').config;
 var collector = require('./lib/collector');
 var responder = require('./lib/responder');
 var log = require('./lib/util/logger');
+var api = require('./lib/API/api');
 	
 client.addListener('message',function(from,to,message){
 	var nickRegexp = new RegExp('^'+config.irc.nick+':');
@@ -18,3 +19,6 @@ client.addListener('message',function(from,to,message){
 		});
 	}
 });
+
+var server = api.listen(3000);
+log.info("API server listening  at http://"+server.address().address+":"+server.address().port);
