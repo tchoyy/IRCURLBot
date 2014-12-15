@@ -11,6 +11,7 @@ Caractéristiques
 - Questionnement du bot par mots clés
 - Accès aux informations par une API REST
 - Suppression des documents via l'API en spécifiant la clé API
+- Réplication de la base PouchDB vers une autre instance PouchDB ou CouchDB externe via l'API
 
 Dépendances
 -----------
@@ -41,7 +42,7 @@ Utilisation
 nicknameBot: help
 ```
 
-* Avoir la liste des URLs :
+* Obtenir la liste des URLs :
 
 ```
 nicknameBot: getAllUrls
@@ -57,22 +58,28 @@ nicknameBot: search recherche
 
 Un fichier api.key est généré à la source du projet lors du premier démarrage. Ce fichier contient une clé permettant de réaliser l'opération DELETE
 
-* Avoir la liste des URLs :
+* Obtenir la liste des URLs :
 
 ```
-curl -X GET 'http://<host>:<port>/url
+curl -X GET 'http://<host>:<port>/url'
 ```
 
-* Avoir un document spécifique :
+* Obtenir un document spécifique :
 
 ```
-curl -X GET 'http://<host>:<port>/url/<_id du document>
+curl -X GET 'http://<host>:<port>/url/<_id du document>'
+```
+
+* Répliquer la base locale Pouchdb avec une autre instance Pouchdb ou Couchdb
+
+```
+curl -X GET -d "target=http://[<login>:<pass>@]<target host>:<target port>/<target db>" 'http://<host>:<port>/urlReplicate'
 ```
 
 * Supprimer un document
 
 ```
-curl -X DELETE 'http://<host>:<port>/url/<_id du document>?apikey=<api key>
+curl -X DELETE 'http://<host>:<port>/url/<_id du document>?apikey=<api key>'
 ```
 
 LICENCE : MIT
