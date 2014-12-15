@@ -1,10 +1,22 @@
 var client = require('./lib/connections/clientIRC');
 var config = require('./lib/util/helpers').config;
+var generateAPIKey = require('./lib/util/helpers').generateAPIKey;
 var collector = require('./lib/collector');
 var responder = require('./lib/responder');
 var log = require('./lib/util/logger');
 var api = require('./lib/API/api');
 	
+var server = api.listen(config.api.port,config.api.host);
+
+server.on('listening',function(){
+	log.info("API server listening  at http://"+server.address().address+":"+server.address().port);
+});
+
+generateAPIKey(function(err,result){
+	if (err) log.error(err);
+	else log.info(result);
+});
+
 client.addListener('message',function(from,to,message){
 	var nickRegexp = new RegExp('^'+config.irc.nick+':');
 	if (nickRegexp.test(message)){
@@ -19,6 +31,3 @@ client.addListener('message',function(from,to,message){
 		});
 	}
 });
-
-var server = api.listen(3000);
-log.info("API server listening  at http://"+server.address().address+":"+server.address().port);
