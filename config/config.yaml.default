@@ -1,4 +1,4 @@
-# Configuration IRC
+# IRC configuration 
 irc:
   server: 'yourserver.net'
   port: 6667
@@ -6,10 +6,10 @@ irc:
   channel: '#yourchannel' 
   optin: '@link'
 
-# Configuration du chemin de la BDD
+# Database path configuration
 dbPath: db/urlIRC
 
-# Configuration API REST
+# API Configuration
 api:
   host: '0.0.0.0'
   port: 3000

@@ -25,8 +25,8 @@ client.addListener('message',function(from,to,message){
 		collector(message,from,function(err,data){
 			if (err) log.error(err);
 			else {
-				client.say(config.irc.channel,from+": votre url "+data.url+" ("+data.title+") a été enregistrée");
-				log.info('URL %s de %s enregistrée avec succès',data.url,from);
+				client.say(config.irc.channel,from+": your url "+data.url+" ("+data.title+") has been saved");
+				log.info('URL %s from %s successfully saved',data.url,from);
 			}
 		});
 	}
