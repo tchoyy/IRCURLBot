@@ -12,9 +12,10 @@ server.on('listening',function(){
 	log.info("API server listening  at http://"+server.address().address+":"+server.address().port);
 });
 
-generateAPIKey(function(err,result){
-	if (err) log.error(err);
-	else log.info(result);
+generateAPIKey.then(function(message){
+	log.info(message);
+}).catch(function(err){
+	log.error(err);
 });
 
 client.addListener('message',function(from,to,message){
