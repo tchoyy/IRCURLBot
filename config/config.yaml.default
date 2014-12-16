@@ -1,0 +1,15 @@
+# IRC configuration 
+irc:
+  server: 'yourserver.net'
+  port: 6667
+  nick: 'chooseanickname'
+  channel: '#yourchannel' 
+  optin: '@link'
+
+# Database path configuration
+dbPath: db/urlIRC
+
+# API Configuration
+api:
+  host: '0.0.0.0'
+  port: 3000
