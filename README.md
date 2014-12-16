@@ -12,6 +12,7 @@ Caractéristiques
 - Accès aux informations par une API REST
 - Suppression des documents via l'API en spécifiant la clé API
 - Réplication de la base PouchDB vers une autre instance PouchDB ou CouchDB externe via l'API
+- Logs en format JSON avec Bunyan (https://github.com/trentm/node-bunyan)
 
 Dépendances
 -----------
@@ -29,6 +30,12 @@ cd config
 cp config.yaml.default config.yaml 
 vi config.yaml # Définir vos paramètres de configuration
 node app
+```
+
+Pour le formatage des logs, utiliser le cli bunyan :
+
+```
+node app |bunyan
 ```
 
 Utilisation
@@ -73,7 +80,7 @@ curl -X GET 'http://<host>:<port>/url/<_id du document>'
 * Répliquer la base locale Pouchdb avec une autre instance Pouchdb ou Couchdb
 
 ```
-curl -X GET -d "target=http://[<login>:<pass>@]<target host>:<target port>/<target db>" 'http://<host>:<port>/urlReplicate'
+curl -X GET -d 'target=http://[<login>:<pass>@]<target host>:<target port>/<target db>" 'http://<host>:<port>/urlReplicate'
 ```
 
 * Supprimer un document
