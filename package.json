@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/tchoyy/IRCURLBot",
   "dependencies": {
+		"bluebird": "^2.3.11",
     "body-parser": "^1.10.0",
     "bunyan": "^1.2.3",
     "cheerio": "^0.18.0",
