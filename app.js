@@ -5,6 +5,7 @@ var collector = require('./lib/collector');
 var responder = require('./lib/responder');
 var log = require('./lib/util/logger');
 var api = require('./lib/API/api');
+var i18n = require('./lib/util/i18n');
 	
 var server = api.listen(config.api.port,config.api.host);
 
@@ -26,7 +27,7 @@ client.addListener('message',function(from,to,message){
 		collector(message,from,function(err,data){
 			if (err) log.error(err);
 			else {
-				client.say(config.irc.channel,from+": your url "+data.url+" ("+data.title+") has been saved");
+				client.say(config.irc.channel,i18n.__("%s: your url %s (%s) has been saved",from,data.url,data.title));
 				log.info('URL %s from %s successfully saved',data.url,from);
 			}
 		});
