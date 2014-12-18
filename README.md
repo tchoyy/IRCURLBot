@@ -80,7 +80,7 @@ curl -X GET 'http://<host>:<port>/url/<_id du document>'
 * Répliquer la base locale Pouchdb avec une autre instance Pouchdb ou Couchdb
 
 ```
-curl -X GET -d 'target=http://[<login>:<pass>@]<target host>:<target port>/<target db>" 'http://<host>:<port>/urlReplicate'
+curl -X GET -d 'target=http://[<login>:<pass>@]<target host>:<target port>/<target db>' 'http://<host>:<port>/urlReplicate'
 ```
 
 * Supprimer un document
