@@ -13,6 +13,7 @@ Caractéristiques
 - Suppression des documents via l'API en spécifiant la clé API
 - Réplication de la base PouchDB vers une autre instance PouchDB ou CouchDB externe via l'API
 - Logs en format JSON avec Bunyan (https://github.com/trentm/node-bunyan)
+- Internationalisation du langage du BOT sur l'IRC (anglais / français)
 
 Dépendances
 -----------
@@ -29,6 +30,7 @@ npm install
 cd config
 cp config.yaml.default config.yaml 
 vi config.yaml # Définir vos paramètres de configuration
+cd ..
 node app
 ```
 
