@@ -1,3 +1,6 @@
+# General configuration
+lang: 'en'
+
 # IRC configuration 
 irc:
   server: 'yourserver.net'

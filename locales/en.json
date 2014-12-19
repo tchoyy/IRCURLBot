@@ -1,0 +1,5 @@
+{
+	"Hi, I'm %s ! I collect URLs, ask me 'help' if you need": "Hi, I'm %s ! I collect URLs, ask me 'help' if you need",
+	"%s : put %s to record an Url\nlist of availables commands\n\t- getAllUrls\n\t- search <request>":"%s : put %s to record an Url\nlist of availables commands\n\t- getAllUrls\n\t- search <request>",
+	"%s: your url %s (%s) has been saved":"%s: your url %s (%s) has been saved"
+}
