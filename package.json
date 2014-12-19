@@ -1,6 +1,6 @@
 {
   "name": "IRCURLBot",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "IRC Bot that collects url posted on an IRC channel and saves it in a pouchdb database. Commands can be applied to ask him those url from keywords. It also offers a REST API interface to get the saved URL.",
   "main": "app.js",
   "devDependencies": {},
