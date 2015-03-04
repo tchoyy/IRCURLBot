@@ -43,12 +43,18 @@ node app |bunyan
 Utilisation
 -----------
 
-### Sur le canal IRC :
+### Sur le canal IRC ou en PM (dans ce dernier cas, ne pas mettre le nickname du bot) :
 
 * Aide générale :
 
 ```
 nicknameBot: help
+```
+
+* en PM :
+
+```
+help
 ```
 
 * Obtenir la liste des URLs :
