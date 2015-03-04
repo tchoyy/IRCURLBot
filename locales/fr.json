@@ -1,5 +1,5 @@
 {
-	"Hi, I'm %s ! I collect URLs, ask me 'help' if you need":"Bonjour, je suis %s ! je récupère les URLs, demandez moi de l'aide (help) pour savoir comment faire",
+	"Hi, I'm %s ! I collect URLs, ask me 'help' if you need (pm or channel)":"Bonjour, je suis %s ! je récupère les URLs, demandez moi de l'aide (help) pour savoir comment faire (pm ou channel)",
 	"%s: put %s to record an Url\nlist of availables commands\n\t- getAllUrls\n\t- search <request>":"%s: mettez l'option %s pour enregistrer une Url\nListe des commandes disponibles\n\t- getAllUrls\n\t- search <requête>",
 	"%s: your url %s (%s) has been saved":"%s: votre url %s (%s) a été enregistrée"
 }

@@ -33,3 +33,7 @@ client.addListener('message',function(from,to,message){
 		});
 	}
 });
+
+client.addListener('pm',function(from,message){
+	responder(message,from,true);
+});
